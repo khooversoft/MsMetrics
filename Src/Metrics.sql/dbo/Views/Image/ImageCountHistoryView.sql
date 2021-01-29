@@ -1,0 +1,15 @@
+﻿--CREATE view ImageCountHistoryView
+--as
+--	SELECT	x.Id
+--			,x.[Date]
+--			,x.[Value] as 'ImageCount'
+--			,r.[Region]
+--			,l.[Language]
+--			,p.[Provider]
+--			,c.[Category]
+--	FROM	[dbo].[AttributeHistory] x
+--			left join [dbo].[Region] r on x.[RegionId] = r.[RegionId]
+--			left join [dbo].[Language] l on x.[LanguageId] = l.[LanguageId]
+--			left join [dbo].[Provider] p on x.[ProviderId] = p.[ProviderId]
+--			left join [dbo].[Category] c on x.[CategoryId] = c.[CategoryId]
+--;
