@@ -65,6 +65,7 @@
     <Folder Include="dbo\Views\Image" />
     <Folder Include="dbo\Views\Fake" />
     <Folder Include="Scripts\Old" />
+    <Folder Include="dbo\Views\Base" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Tiers.sql" />
@@ -73,10 +74,8 @@
     <Build Include="dbo\Tables\Language.sql" />
     <Build Include="dbo\Tables\ImageLevelDescription.sql" />
     <Build Include="dbo\Tables\Segment.sql" />
-    <Build Include="dbo\Tables\Category.sql" />
     <Build Include="dbo\Tables\AttributeImport.sql" />
     <Build Include="dbo\Tables\AttributeHistory.sql" />
-    <Build Include="dbo\Tables\Attribute.sql" />
     <Build Include="dbo\Stored Procedures\ImportData.sql" />
     <Build Include="dbo\Views\Image\AllEntitiesSummary.sql" />
     <Build Include="dbo\Views\Image\ImageCountHistoryView.sql" />
@@ -90,6 +89,9 @@
     <Build Include="dbo\Views\Image\ImageCountSummaryByRegion.sql" />
     <Build Include="dbo\Views\Fake\Series_2000.sql" />
     <None Include="Scripts\Old\LoadImageCountHistory.sql" />
+    <Build Include="dbo\Tables\AttributeType.sql" />
+    <Build Include="dbo\Tables\Attribute.sql" />
+    <Build Include="dbo\Views\Base\AttributeHistoryView.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Schema\SqlSchemaCompare1.scmp" />
@@ -100,5 +102,6 @@
     <None Include="Scripts\LoadImageLevelDescription.sql" />
     <None Include="Scripts\BuildAttribute.sql" />
     <None Include="Scripts\LoadAttributeImport.sql" />
+    <None Include="Schema\Metrics.sql.publish.xml" />
   </ItemGroup>
 </Project>

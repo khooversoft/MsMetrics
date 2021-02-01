@@ -1,12 +1,22 @@
 ﻿CREATE VIEW AllEntitiesSummary
 AS
 	select	'Entities' = 'All entities'
-			,'Region by number' = (SELECT count(*) FROM AttributeHistory)
-			,'Region by percentage' = 100
+			,'Count' = (
+						SELECT max(TotalCount)
+						FROM (
+							select	x.[ImageLevel]
+									,sum(x.[TotalCount]) as TotalCount
+							from	[dbo].[ImageCountHistoryView] x
+							group by
+									x.[ImageLevel]
+							) y
+						)
+			,'Percentage' = 100
 
 	UNION ALL
 
 	SELECT	x.Description
-			,'Region by number' = x.Count
-			,'Region by percentage' = cast(x.Count as float) / (SELECT count(*) FROM AttributeHistory) * 100
+			,'Count' = x.Value
+			,'Percentage' = x.PctOfTotal * 100
 	FROM	ImageCountSummaryAllUp x
+	;

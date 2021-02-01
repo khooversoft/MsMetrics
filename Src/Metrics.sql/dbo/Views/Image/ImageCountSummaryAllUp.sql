@@ -1,10 +1,16 @@
 ﻿CREATE VIEW ImageCountSummaryAllUp
 AS
-SELECT	il.Description
-		,'Count' = (
-			SELECT	count(*)
-			FROM	ImageCountSummaryByImageLevel xx
-			WHERE	il.ImageLevel = xx.ImageLevel
-			)
-		,'Total' = (SELECT count(*) FROM AttributeHistory)
-FROM	ImageLevelDescription il
+select	i.[Description]
+		,i.[Value]
+		,'PctOfTotal' = (cast(i.[Value] as float) / i.[TotalCount] )
+		,i.[TotalCount]
+FROM	(
+		select	x.[ImageLevel]
+				,x.[Description]
+				,sum(x.[Value]) as Value
+				,sum(x.[TotalCount]) as TotalCount
+		from	[dbo].[ImageCountHistoryView] x
+		group by
+				x.[ImageLevel],
+				x.[Description]
+) i
